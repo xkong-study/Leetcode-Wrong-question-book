@@ -7,6 +7,7 @@ The primary goal of the provided code is to return a two-dimensional array where
 ## 2. Utilizing a Queue
 
 In Breadth-First Search (BFS) of trees, a common data structure employed is a queue. With the help of a queue, we can ensure nodes are processed in the order they are entered into the queue.
+Queue就相当于一个暂时存储节点的存储器
 
 ### 2.1 Code Breakdown
 
