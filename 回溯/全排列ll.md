@@ -60,21 +60,26 @@ return path
 判断同一个数组里面不能有相同位置的数字
 
 **新方法**
-```python
-class Solution:
-    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        ans =[]
-        visted = []
-        def dfs(nums, path):
-            if not nums:
-                ans.append(path)
-                return
-            temp = list(set(nums))
-            for idx,i in enumerate(temp):
-                nums.remove(i)
-                dfs(nums, path + [i])
-                nums.append(i)
-        dfs(nums,[])
-        return ans
+```javaScript
+var permuteUnique = function(nums) {
+let path = [];
+function dfs(nums, res) {
+    if (nums.length === 0) {
+        path.push([...res]);
+        return;
+    }
+    let temp = [...new Set(nums)];
+    for (let i of temp) {
+    let index = nums.indexOf(i);
+    nums.splice(index, 1);
+    dfs(nums, [...res, i]);
+     nums.splice(index, 0, i);
+    }
+ }
+        
+ dfs(nums, []);
+ return path;
+}
+
 ```
 
