@@ -1,4 +1,9 @@
-我的错误写法
+### 前言：
+
+这道理很简单就是把nums2里面的每一个右边的最大值元素获取到， 然后对应nums1的元素一一存入答案。因为nums1是nums2的子集，所以只求nums2就好。
+
+### 我的错误写法
+
 ```javaScript
 var nextGreaterElement = function(nums1, nums2) {
     let res = new Array(nums1.length).fill(-1);
