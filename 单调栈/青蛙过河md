@@ -1,3 +1,35 @@
-对于这道题，单调栈并不是最适合的解决方案。这是因为青蛙的跳跃不仅仅取决于当前的石子位置，还取决于它上一次跳跃的距离。因此，我们需要同时考虑石子的位置和青蛙上一次的跳跃距离。
+**思路**：
 
-更常见的方法是使用动态规划或深度优先搜索（DFS）来解决这个问题。
+1. 我们可以将石子的位置视为“高度”，而青蛙每次跳跃的距离可以视为“宽度”。
+2. 使用单调栈来跟踪青蛙可以到达的石子，并确保这些石子的位置是单调递增的。
+3. 当青蛙跳到一个新的石子上时，我们检查它是否可以从栈中的任何石子跳到这个石子上。如果可以，我们更新青蛙的跳跃距离并将新石子的位置压入栈中。
+4. 如果青蛙不能从栈中的任何石子跳到新石子上，我们就弹出栈顶的石子，直到找到一个可以跳到新石子上的石子或栈为空。
+
+**注意**：这种方法可能不是最优的，因为它可能需要多次遍历石子数组，并且在某些情况下可能无法找到正确的解决方案。
+
+实际上，对于“青蛙过河”这类问题，更常见的方法是使用动态规划或深度优先搜索（DFS）。这些方法可以更直接地处理青蛙的跳跃距离和石子的位置，而不需要维护一个单调栈。
+
+```javaScript
+var canCross = function(stones) {
+    if (!stones || stones.length === 0) return false;
+    let n = stones.length;
+    if (n === 1) return true;
+    let stack = [{position: stones[0], jump: 0}];
+    for (let i = 1; i < n; i++) {
+        let newStack = [];
+        for (let j = 0; j < stack.length; j++) {
+            let {position, jump} = stack[j];
+            for (let k = jump - 1; k <= jump + 1; k++) {
+                if (k > 0 && position + k === stones[i]) {
+                    newStack.push({position: stones[i], jump: k});
+                }
+            }
+        }
+        stack = newStack;
+    }
+    return stack.length > 0;
+};
+
+```
+运行超时了 ------还是用dfs写吧！
+
