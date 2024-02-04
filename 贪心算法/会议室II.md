@@ -16,15 +16,14 @@
 
 ```code
 var minMeetingRooms = function(intervals) {
-let nums = []
-for(let [key,value] of intervals){
-    nums.push([key,1]);
-    nums.push([value,-1]);
+let nums = new Array(1001).fill(0);
+for(let i=0;i<nums.length;i++){
+    nums[nums[i][0]]+=nums[i][0];
+    nums[nums[i][1]]-=nums[i][0];
 }
-nums.sort((a,b)=>a[0]==b[0]?a[1]-b[1]:a[0]-b[0]);
 let max = 0;
 let count = 0;
-for(let [key,value] of nums){
+for(let value of nums){
     count+=value;
     max =Math.max(max,count);
 }
