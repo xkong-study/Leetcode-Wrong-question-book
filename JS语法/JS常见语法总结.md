@@ -31,6 +31,16 @@
 - `concat(array2, array3, ...)`：将多个数组合并成一个新数组，不修改原数组。
 - `join(separator)`：将数组元素拼接成一个字符串，可指定分隔符。
 - `toString()`：将数组转换为字符串，元素用逗号分隔。
+- `String.fromCharCode()`：
+大写字母：
+
+范围：65 到 90
+对应字符：A 到 Z
+小写字母：
+
+范围：97 到 122
+对应字符：a 到 z
+
 - `slice(startIndex, endIndex)`：从数组中提取指定范围的元素，返回一个新数组，不修改原数组。
 - `flat(depth)`：将多维数组扁平化，depth 表示扁平化的层级，默认为 1。
 
